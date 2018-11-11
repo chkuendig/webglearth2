@@ -244,7 +244,7 @@ exportSymbol('WebGLEarth.prototype.flyTo',
 weapi.exports.App.prototype.flyToFitBounds = function(minlat, maxlat,
                                                       minlon, maxlon,
                                                       opt_heading, opt_tilt,
-                                                      opt_duration) {
+                                                      opt_duration, opt_paused) {
   minlat = goog.math.toRadians(minlat);
   maxlat = goog.math.toRadians(maxlat);
   minlon = goog.math.toRadians(minlon);
@@ -265,10 +265,10 @@ weapi.exports.App.prototype.flyToFitBounds = function(minlat, maxlat,
 
   var center = [(minlat + maxlat) / 2, (minlon + maxlon) / 2];
 
-  this.camera.animator.flyTo(center[0], center[1], altitude,
+  return  this.camera.animator.flyTo(center[0], center[1], altitude,
       goog.isDef(opt_heading) ? goog.math.toRadians(opt_heading) : undefined,
       goog.isDef(opt_tilt) ? goog.math.toRadians(opt_tilt) : undefined,
-      goog.isDef(opt_heading) || goog.isDef(opt_tilt), opt_duration);
+      goog.isDef(opt_heading) || goog.isDef(opt_tilt), opt_duration,opt_paused);
 };
 exportSymbol('WebGLEarth.prototype.flyToFitBounds',
              weapi.exports.App.prototype.flyToFitBounds);

@@ -58,9 +58,9 @@ exportSymbolL('WebGLEarth.prototype.panInsideBounds', function(bnds, opt_opts) {
   if (goog.isArray(bnds[0]))
     bnds = [bnds[0][0], bnds[1][0], bnds[0][1], bnds[1][1]];
   opt_opts = opt_opts || {};
-  this.flyToFitBounds(bnds[0], bnds[1], bnds[2], bnds[3],
+  return this.flyToFitBounds(bnds[0], bnds[1], bnds[2], bnds[3],
                       opt_opts['heading'], opt_opts['tilt'],
-                      opt_opts['duration']);
+                      opt_opts['duration'],opt_opts['paused']);
 });
 
 

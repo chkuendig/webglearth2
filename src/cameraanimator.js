@@ -63,12 +63,13 @@ weapi.CameraAnimator.CAMERA_ANIMATION_MAX_ASCENT = 0.2;
  *                                      such a way, that the camera target is
  *                                      [latitude, longitude] (default false).
  * @param {number=} opt_duration Duration of the animation in seconds.
+ * @param {number=} opt_pause Animation is returned instead of played if true
  */
 weapi.CameraAnimator.prototype.flyTo = function(latitude, longitude,
                                                 opt_altitude,
                                                 opt_heading, opt_tilt,
                                                 opt_targetPosition,
-                                                opt_duration) {
+                                                opt_duration,opt_pause) {
   var cam = this.camera_;
 
   if (opt_targetPosition) {
@@ -172,8 +173,10 @@ weapi.CameraAnimator.prototype.flyTo = function(latitude, longitude,
 
   goog.events.listen(this.animation_, goog.fx.Transition.EventType.END,
                      this.onEnd_, false, this);
-
-  this.animation_.play();
+if(opt_pause) {
+  return  this.animation_
+} else {
+  this.animation_.play();}
 };
 
 
